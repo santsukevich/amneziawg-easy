@@ -1,5 +1,5 @@
 services:
-  wg-easy:
+  amnezia-wg-easy:
     build:
       dockerfile: ./Dockerfile.dev
     command: dev
