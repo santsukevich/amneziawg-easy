@@ -14,6 +14,7 @@ export const hooks = sqliteTable('hooks_table', {
   preUp: text('pre_up').notNull(),
   postUp: text('post_up').notNull(),
   preDown: text('pre_down').notNull(),
+  postDown: text('post_down').notNull(),
   jc: text('jc').notNull(),
   jmin: text('jmin').notNull(),
   jmax: text('jmax').notNull(),
