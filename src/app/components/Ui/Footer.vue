@@ -4,8 +4,8 @@
       <a
         class="hover:underline"
         target="_blank"
-        href="https://github.com/wg-easy/wg-easy"
-        >WireGuard Easy</a
+        href="https://github.com/Evoll/amneziawg-easy"
+        >AmneziaWG Easy</a
       >
       ({{ globalStore.information?.currentRelease }}) © 2021-2025 by
       <a
@@ -24,7 +24,7 @@
       ·
       <a
         class="hover:underline"
-        href="https://github.com/wg-easy/wg-easy#donate"
+        href="https://github.com/Evoll/amneziawg-easy#donate"
         target="_blank"
         >{{ $t('layout.donate') }}</a
       >

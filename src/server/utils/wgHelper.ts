@@ -43,7 +43,16 @@ MTU = ${wgInterface.mtu}
 PreUp = ${iptablesTemplate(hooks.preUp, wgInterface)}
 PostUp = ${iptablesTemplate(hooks.postUp, wgInterface)}
 PreDown = ${iptablesTemplate(hooks.preDown, wgInterface)}
-PostDown = ${iptablesTemplate(hooks.postDown, wgInterface)}`;
+PostDown = ${iptablesTemplate(hooks.postDown, wgInterface)};
+Jc = ${iptablesTemplate(hooks.jc, wgInterface)};
+JMin = ${iptablesTemplate(hooks.jmin, wgInterface)};
+JMax = ${iptablesTemplate(hooks.jmax, wgInterface)};
+S1 = ${iptablesTemplate(hooks.s1, wgInterface)};
+S2 = ${iptablesTemplate(hooks.s2, wgInterface)};
+H1 = ${iptablesTemplate(hooks.h1, wgInterface)};
+H2 = ${iptablesTemplate(hooks.h2, wgInterface)};
+H3 = ${iptablesTemplate(hooks.h3, wgInterface)};
+H4 = ${iptablesTemplate(hooks.h4, wgInterface)}`;  
   },
 
   generateClientConfig: (
@@ -59,6 +68,15 @@ PostDown = ${iptablesTemplate(hooks.postDown, wgInterface)}`;
       client.postUp ? `PostUp = ${client.postUp}` : null,
       client.preDown ? `PreDown = ${client.preDown}` : null,
       client.postDown ? `PostDown = ${client.postDown}` : null,
+	  client.jc ? `JC = ${client.jc}` : null,
+	  client.jmin ? `JMin = ${client.jmin}` : null,
+	  client.jmax ? `JMax = ${client.jmax}` : null,
+	  client.s1 ? `S1 = ${client.s1}` : null,
+	  client.s2 ? `S2 = ${client.s2}` : null,
+	  client.h1 ? `H1 = ${client.h1}` : null,
+	  client.h2 ? `H2 = ${client.h2}` : null,
+	  client.h3 ? `H3 = ${client.h3}` : null,
+	  client.h4 ? `H4 = ${client.h4}` : null,
     ].filter((v) => v !== null);
 
     return `[Interface]

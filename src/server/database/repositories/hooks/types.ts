@@ -11,6 +11,14 @@ export const HooksUpdateSchema = schemaForType<HooksUpdateType>()(
     preUp: HookSchema,
     postUp: HookSchema,
     preDown: HookSchema,
-    postDown: HookSchema,
+    jc: HookSchema,
+	jmin: HookSchema,
+	jmax: HookSchema,
+	s1: HookSchema,
+	s2: HookSchema,
+	h1: HookSchema,
+	h2: HookSchema,
+	h3: HookSchema,
+	h4: HookSchema,
   })
 );

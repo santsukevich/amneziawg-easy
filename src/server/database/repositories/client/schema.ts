@@ -3,6 +3,11 @@ import { int, sqliteTable, text } from 'drizzle-orm/sqlite-core';
 
 import { oneTimeLink, user, wgInterface } from '../../schema';
 
+function getRandomNumberString(min, max) {
+  return String(Math.floor(Math.random() * (max - min + 1)) + min);
+}
+
+
 /** null means use value from userConfig */
 
 export const client = sqliteTable('clients_table', {
@@ -26,6 +31,15 @@ export const client = sqliteTable('clients_table', {
   postUp: text('post_up').default('').notNull(),
   preDown: text('pre_down').default('').notNull(),
   postDown: text('post_down').default('').notNull(),
+  jc: text('jc').default(getRandomNumberString(2, 120)).notNull(),
+  jmin: text('jmin').default('10').notNull(),
+  jmax: text('jmax').default('50').notNull(),
+  s1: text('s1').default(getRandomNumberString(15, 150)).notNull(),
+  s2: text('s2').default(getRandomNumberString(15, 150)).notNull(),
+  h1: text('h1').default(getRandomNumberString(0, 999999)).notNull(),
+  h2: text('h2').default(getRandomNumberString(0, 999999)).notNull(),
+  h3: text('h3').default(getRandomNumberString(0, 999999)).notNull(),
+  h4: text('h4').default(getRandomNumberString(0, 999999)).notNull(),
   privateKey: text('private_key').notNull(),
   publicKey: text('public_key').notNull(),
   preSharedKey: text('pre_shared_key').notNull(),
