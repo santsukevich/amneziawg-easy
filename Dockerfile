@@ -1,3 +1,5 @@
+FROM amneziavpn/amnezia-wg:latest AS awg
+
 FROM docker.io/library/node:lts-alpine AS build
 WORKDIR /app
 
@@ -21,6 +23,11 @@ WORKDIR /app
 
 HEALTHCHECK --interval=1m --timeout=5s --retries=3 CMD /usr/bin/timeout 5s /bin/sh -c "/usr/bin/wg show | /bin/grep -q interface || exit 1"
 
+# Copy wg-tools
+COPY --from=awg /usr/bin/wireguard-go /usr/bin/wireguard-go
+COPY --from=awg /usr/bin/wg /usr/bin/wg
+COPY --from=awg /usr/bin/wg-quick /usr/bin/wg-quick
+
 # Copy build
 COPY --from=build /app/.output /app
 # Copy migrations
@@ -40,9 +47,9 @@ RUN apk add --no-cache \
     iptables \
     ip6tables \
     nftables \
+    iproute2 \
     kmod \
-    iptables-legacy \
-    amneziawg-tools
+    iptables-legacy
 
 # Use iptables-legacy
 RUN update-alternatives --install /usr/sbin/iptables iptables /usr/sbin/iptables-legacy 10 --slave /usr/sbin/iptables-restore iptables-restore /usr/sbin/iptables-legacy-restore --slave /usr/sbin/iptables-save iptables-save /usr/sbin/iptables-legacy-save
