@@ -48,6 +48,7 @@ RUN apk add --no-cache \
     ip6tables \
     nftables \
     iproute2 \
+    bash \
     kmod \
     iptables-legacy
 
