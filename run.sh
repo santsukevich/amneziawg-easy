@@ -3,4 +3,4 @@
 export $(grep -v '^#' .env | xargs -d '\n')
 
 # Start containers
-docker compose up -d ./docker-compose.traefik.yml
+docker compose -f ./docker-compose.traefik.yml up -d
