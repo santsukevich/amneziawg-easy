@@ -6,6 +6,8 @@ services:
       TRAEFIK_DASHBOARD_BASICAUTH_USERNAME: ${TRAEFIK_DASHBOARD_BASICAUTH_USERNAME}
       TRAEFIK_DASHBOARD_BASICAUTH_PASSWORD: ${TRAEFIK_DASHBOARD_BASICAUTH_PASSWORD}
       TRAEFIK_CR_LE_ACME_EMAIL: ${TRAEFIK_CR_LE_ACME_EMAIL}
+    command:
+      - --certificatesresolvers.letsencrypt.acme.email=${TRAEFIK_CR_LE_ACME_EMAIL}
     restart: unless-stopped
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
