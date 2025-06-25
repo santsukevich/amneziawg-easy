@@ -11,7 +11,7 @@ http:
                 stsSeconds: 2592000
     routers:
         api:
-            # rule: 'Host(`{{ env "TRAEFIK_DASHBOARD_HOST" }}`)'
+            rule: 'Host(`{{ env "TRAEFIK_DASHBOARD_HOST" }}`)'
             entrypoints:
                 - websecure
             middlewares:
